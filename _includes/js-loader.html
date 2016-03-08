@@ -1,0 +1,33 @@
+<script src="{{ "/js/jquery-2.2.1.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/materialize.min.js" | prepend: site.baseurl }}"></script>
+<script>(function(d, s, id) {
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) return;
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1609575572591965";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));</script>
+<script>
+$(function() {
+  $(".dropdown-navbutton").dropdown({
+       inDuration: 300,
+       outDuration: 225,
+       constrain_width: false, // Does not change width of dropdown to that of the activator
+       hover: true, // Activate on hover
+       gutter: 0, // Spacing from edge
+       belowOrigin: true // Displays dropdown below the button
+   });
+  $("#search-toggle").click(function(){
+    $("#top-nav").toggle();
+    $("#search-input").toggle();
+    if($("#search-input").is(":visible")){
+      $("#search").focus();
+    }
+  })
+  $("#search-clear").click(function(){
+      $("#search-input").hide();
+      $("#search").val("");
+      $("#top-nav").show();
+  })
+});
+</script>

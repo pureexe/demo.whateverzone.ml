@@ -1,0 +1,49 @@
+---
+layout: default
+---
+<div class="container" style="padding-top: 1.5rem;">
+<div class="post">
+  <div class="card" itemscope itemtype='http://schema.org/BlogPosting'>
+    <div class="card-image">
+      <img src="" style="background-image: url('{{page.thumbnail}}');width: 100%;height: 280px;background-position: center;background-size: cover;">
+      <span class="card-title">{{page.title}}</span>
+    </div>
+    <div class="card-content">
+      <meta itemprop="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 340 }}"/>
+      <article class="markdown-render" itemprop="articleBody">
+        {% assign rawExtension = page.path | split:"." | last %}
+        {% if rawExtension == "md" %}
+        {% endif %}
+        {{ content }}
+      </article>
+    </div>
+    <div class="card-action">
+      <span>
+        <i class="mdi-device-access-time"></i>
+        <meta content="{{ page.date }}" itemprop="datePublished">
+        <span class="date-display" style="margin-right:0.5em;">
+          <span class="date">{{ page.date | date: "%d %B" | replace:'January','มกราคม' | replace:'February','กุมภาพันธ์' | replace:'March','มีนาคม' | replace:'April','เมษายน' | replace:'May','พฤษภาคม' | replace:'June','มิถุนายน' | replace:'July','กรกฏาคม' | replace:'August','สิงหาคม' | replace:'September','กันยายน' | replace:'October','ตุลาคม' | replace:'November','พฤศจิกายน' | replace:'December','ธันวาคม' }} {{ page.date | date: "%Y" | plus:"543"}}</span>
+        </span>
+        <div style="display:inline-block">
+          {% for tag in page.tags %}
+            <div class="chip">
+              <a href="{{site.baseurl}}/search?q={{tag}}&amp;type=tag" class="grey-text text-darken-1" rel="tag" style="margin-right:0px;">
+                {{tag}}
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+        </span>
+    </div>
+  </div>
+  <div class="pagination" style="width:100%;text-align: center;">
+    {% if page.next %}
+      <a style="float:left" href="{{ page.next.url }}" class="previous"><i class="mdi-image-navigate-before" style="font-size:48px;"></i></a>
+    {% endif %}
+      <a href="/"><i class="mdi-action-home" style="font-size:48px;"></i></a>
+    {% if page.previous %}
+      <a style="float:right" href="{{ page.previous.url }}" class="next"><i class="mdi-image-navigate-next" style="font-size:48px;"></i></a>
+    {% endif %}
+  </div>
+</div>
+</div>

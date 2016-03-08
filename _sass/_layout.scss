@@ -1,0 +1,9 @@
+/*.container{
+  padding-left: 0%;
+  padding-right: 0%;
+  width: 85%;
+  @include media-query($on-mobile) {
+      width: 100%;
+  }
+}
+*/

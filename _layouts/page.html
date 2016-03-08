@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="container" style="padding-top: 1.5rem;">
+<div class="post">
+  <div class="card" itemscope itemtype='http://schema.org/BlogPosting'>
+    <div class="card-image">
+      <img src="" style="background-image: url('{{page.thumbnail}}');width: 100%;height: 280px;background-position: center;background-size: cover;">
+      <span class="card-title">{{page.title}}</span>
+    </div>
+    <div class="card-content">
+      <meta itemprop="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 340 }}"/>
+      <article class="markdown-render" itemprop="articleBody">
+        {{ content }}
+      </article>
+      <center><a class="btn waves-effect waves-light">ดาวน์โหลด</a></center>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<center><h1>เกมแปลไทย<h1></center>
+<div class="container">
+  <div class="row">
+{% for post in site.pages %}
+{% if post.type == "game" %}
+       <div class="col l4 m6 s12">
+         <div class="card">
+           <div class="card-image card-image waves-effect waves-light" style="width: 100%;height:280px;">
+             <a href="{{post.url}}" style="width: 100%;height:280px;">
+               <img src="" style="background-image: url('{{post.thumbnail}}');width: 100%;height:280px;background-position: center;background-size: cover;">
+               <span class="card-title">{{post.title}}</span>
+             </a>
+           </div>
+         </div>
+       </div>
+{%endif%}
+{% endfor %}
+</div>

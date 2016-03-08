@@ -1,0 +1,49 @@
+---
+layout: default
+---
+<div class="container" style="padding-top: 1.5rem;">
+  <div class="row">
+{% for post in paginator.posts %}
+       <div class="col l12 m12 s12">
+         <div class="card">
+           <div class="card-image waves-effect waves-block waves-light">
+             <a href="{{ post.url }}" style="width:100%;height:280px;">
+               <img src="" style="background-image: url('{{post.thumbnail}}');width: 100%;height: 280px;background-position: center;background-size: cover;">
+               <span class="card-title">{{post.title}}</span>
+             </a>
+           </div>
+           <div class="card-content">
+             <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 340, "" }}
+              <a href="{{ post.url }}"> อ่านต่อ... </a></p>
+           </div>
+           <div class="card-action">
+             <span>
+               <i class="mdi-device-access-time"></i>
+               <meta content="{{ post.date }}" itemprop="datePublished">
+               <span class="date-display" style="margin-right:0.5em;">
+                 <span class="date">{{ post.date | date: "%d %B" | replace:'January','มกราคม' | replace:'February','กุมภาพันธ์' | replace:'March','มีนาคม' | replace:'April','เมษายน' | replace:'May','พฤษภาคม' | replace:'June','มิถุนายน' | replace:'July','กรกฏาคม' | replace:'August','สิงหาคม' | replace:'September','กันยายน' | replace:'October','ตุลาคม' | replace:'November','พฤศจิกายน' | replace:'December','ธันวาคม' }} {{ post.date | date: "%Y" | plus:"543"}}</span>
+               </span>
+               <div style="display:inline-block">
+                 {% for tag in post.tags %}
+                   <div class="chip">
+                     <a href="{{baseurl}}/search?q={{tag}}&amp;type=tag" class="grey-text text-darken-1" style="margin-right:0px;" rel="tag">
+                       {{tag}}
+                     </a>
+                   </div>
+                 {% endfor %}
+               </div>
+               </span>
+           </div>
+         </div>
+       </div>
+{% endfor %}
+<div class="pagination" style="width:100%;text-align: center;">
+       {% if paginator.previous_page %}
+         <a style="float:left" href="{{ paginator.previous_page_path }}" class="previous"><i class="mdi-image-navigate-before" style="font-size:48px;"></i></a>
+       {% endif %}
+         <a href="/"><i class="mdi-action-home" style="font-size:48px;"></i></a>
+       {% if paginator.next_page %}
+         <a style="float:right" href="{{ paginator.next_page_path }}" class="next"><i class="mdi-image-navigate-next" style="font-size:48px;"></i></a>
+       {% endif %}
+     </div>
+</div>
